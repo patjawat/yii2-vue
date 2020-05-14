@@ -1,12 +1,17 @@
 <template>
     <div>
-<h1>Note</h1>
+<AddNewButton />
+<Notes />
     </div>
 </template>
 
 <script>
+import AddNewButton from "../components/AddNewButton"
+import Notes from "../components/Notes"
     export default {
-        
+         components:{
+            AddNewButton,Notes
+        },
     }
 </script>
 

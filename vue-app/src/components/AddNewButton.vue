@@ -1,12 +1,13 @@
 <template>
     <div>
-Notesss
+<button type="button" class="btn btn-primary">Add Note</button>
     </div>
 </template>
 
 <script>
+
     export default {
-        
+       
     }
 </script>
 
