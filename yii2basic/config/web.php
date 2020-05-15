@@ -9,12 +9,30 @@ $config = [
     'bootstrap' => ['log'],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
-        '@npm'   => '@vendor/npm-asset',
+        '@npm' => '@vendor/npm-asset',
+    ],
+    'modules' => [
+        'user' => [
+            'class' => 'dektrium\user\Module',
+            'enableUnconfirmedLogin' => true,
+            'confirmWithin' => 21600,
+            'cost' => 12,
+            'admins' => ['admin'],
+        ],
+        'api' => [
+            'class' => 'app\modules\api\Api',
+        ],
     ],
     'components' => [
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'AEmzEOZZ7M7tuDLnD5gMg1qIPWYJ12j2',
+            'parsers' => [
+                'application/json' => \yii\web\JsonParser::class
+            ],
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -43,14 +61,13 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
+
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
-        */
     ],
     'params' => $params,
 ];
@@ -68,7 +85,7 @@ if (YII_ENV_DEV) {
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
-        //'allowedIPs' => ['127.0.0.1', '::1'],
+        'allowedIPs' => ['*', '::1'],
     ];
 }
 
