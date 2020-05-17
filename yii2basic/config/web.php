@@ -27,12 +27,16 @@ $config = [
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
         ],
+        'jwt' => [
+            'class' => \sizeg\jwt\Jwt::class,
+            'key'   => 'secret',
+          ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'AEmzEOZZ7M7tuDLnD5gMg1qIPWYJ12j2',
-            'parsers' => [
-                'application/json' => \yii\web\JsonParser::class
-            ],
+            // 'parsers' => [
+            //     'application/json' => \yii\web\JsonParser::class
+            // ],
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -40,6 +44,7 @@ $config = [
         'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
+            'enableSession' => true,
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',

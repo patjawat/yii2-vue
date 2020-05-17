@@ -20,5 +20,17 @@ class Api extends \yii\base\Module
         parent::init();
 
         // custom initialization code goes here
+        // \Yii::$app->setComponents(
+        //     [
+        //         'errorHandler'=>[
+        //             'errorAction'=>'forum/forum/error',
+        //             'class'=>'yii\web\ErrorHandler',
+        //         ],     
+        //         'jwt' => [
+        //             'class' => \sizeg\jwt\Jwt::class,
+        //             'key'   => 'secret',
+        //           ],
+        //     ]
+        // );
     }
 }

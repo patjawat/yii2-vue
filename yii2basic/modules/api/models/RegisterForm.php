@@ -2,7 +2,7 @@
 
 namespace app\modules\api\models;
 
-use app\models\User;
+use app\modules\api\models\User;
 // use app\modules\api\resources\UserResource;
 use Yii;
 use yii\base\Model;
@@ -29,7 +29,7 @@ class RegisterForm extends Model
     public function rules()
     {
         return [
-            [['username', 'password', 'password_repeat','auth_key'], 'required'],
+            [['username', 'password', 'password_repeat'], 'required'],
             ['password', 'compare', 'compareAttribute' => 'password_repeat'],
             ['username', 'unique',
                 'targetClass' => '\app\modules\api\resources\UserResource',
@@ -44,8 +44,7 @@ class RegisterForm extends Model
             $user = new User();
             $user->username = $this->username;
             $user->password_hash = Yii::$app->security->generatePasswordHash($this->password);
-            $user->access_token = Yii::$app->security->generateRandomString();
-            $user->auth_key = Yii::$app->security->generateRandomString();
+            $user->access_token = Yii::$app->security->generatePasswordHash($this->password);
             if ($user->save()) {
                 return Yii::$app->user->login($user, 0);
             }
