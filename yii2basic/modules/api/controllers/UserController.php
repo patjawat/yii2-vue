@@ -41,6 +41,7 @@ private $_verbs = ['GET','POST','PATCH','PUT','DELETE'];
             'class' => JwtHttpBearerAuth::class,
             'optional' => [
                 'login',
+                'index'
             ],
 
         ];
@@ -55,10 +56,17 @@ private $_verbs = ['GET','POST','PATCH','PUT','DELETE'];
 
         return $behaviors;
     }
-    
+    public $modelClass = 'app\models\Locations';
+    public $serializer = [
+        'class' => 'yii\rest\Serializer',
+        'collectionEnvelope' => 'items',
+    ];
     public function actionIndex()
     {
-        return $this->renderContent('index');
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        return [
+            'status' => User::find()->select(['id','username'])->all()
+        ];
     }
     public function actionLogin()
     {

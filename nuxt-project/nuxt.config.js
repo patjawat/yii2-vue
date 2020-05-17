@@ -59,19 +59,24 @@ export default {
     middleware: ['auth']
   },
   auth: {
+    redirect: {
+      login: '/login',
+      logout: '/',
+      callback: '/login',
+      home: '/'
+    },
     strategies: {
       local: {
         endpoints: {
           login: { url: '/api/user/login', method: 'post', propertyName: 'token' },
-          logout: { url: '/api/user/logout', method: 'post' },
-          user: { url: '/api/user', method: 'get', propertyName: 'user' }
+          // logout: { url: '/api/user/logout', method: 'post', propertyName: false },
+          user: { url: '/api/user/index', method: 'get', propertyName: false }
         },
-        // tokenRequired: true,
-        // tokenType: 'bearer',
-        // globalToken: true,
-        // autoFetchUser: true
+        tokenRequired: true,
+        tokenType: true
       }
-    }
+    },
+    // localStorage: true
   },
   build: {
     /*
