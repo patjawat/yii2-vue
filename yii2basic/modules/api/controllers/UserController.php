@@ -16,8 +16,8 @@ class UserController extends Controller
 
 public static function allowedDomains() {
     return [
-        // '*',                        // star allows all domains
-        'http://127.0.0.1:3000',
+        '*',                        // star allows all domains
+        // 'http://127.0.0.1:3000',
     ];
 }
 
@@ -70,15 +70,15 @@ private $_verbs = ['GET','POST','PATCH','PUT','DELETE'];
     }
     public function actionLogin()
     {
-        Yii::$app->response->format = Response::FORMAT_JSON;
+        // Yii::$app->response->format = Response::FORMAT_JSON;
         // return Yii::$app->request->post();
         if (Yii::$app->request->isPost) {
-            $post = Yii::$app->request->post();
-            // $username = $post['username'];
-            // $password = $post['password'];
-            // $check = $this->AuthCheck($username,$password);
-            // return $check;
-            return Yii::$app->request->post();
+            $post = Yii::$app->request->bodyParams;
+            
+            $username = $post['username'];
+            $password = $post['password'];
+            $check = $this->AuthCheck($username,$password);
+            return $check;
            
         }
 

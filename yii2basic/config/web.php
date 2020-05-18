@@ -38,6 +38,17 @@ $config = [
                 'application/json' => \yii\web\JsonParser::class
             ],
         ],
+        'response' => [
+            'format' =>  \yii\web\Response::FORMAT_JSON,
+            'charset' => 'UTF-8',
+            'formatters' => [
+                \yii\web\Response::FORMAT_JSON => [
+                    'class' => 'yii\web\JsonResponseFormatter',
+                    'prettyPrint' => YII_DEBUG, // use "pretty" output in debug mode
+                    'encodeOptions' => JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE,
+                ],
+            ],
+        ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],

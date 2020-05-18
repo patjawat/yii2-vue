@@ -53,16 +53,17 @@
       }
     },
     methods: {
-    onSubmit(evt) {
-        // let data = {
-        //     username : this.form.username,
-        //     password : this.form.password
-        // }
-      //  let res= await this.$axios.$post('http://127.0.0.1:4000/users/authenticate',data);
+    async onSubmit(evt) {
+        let data = {
+            username : this.form.username,
+            password : this.form.password
+        }
+       let res = await this.$axios.$post('/user/login',data);
+       console.log(res)
+       
       //   this.auth = res;
-      this.$auth.loginWith('local', {
-        data: JSON.stringify(this.form)
-      })
+
+      // })
 
       },
 
