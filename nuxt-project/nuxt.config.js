@@ -39,6 +39,7 @@ export default {
     // Doc: https://bootstrap-vue.js.org
     "bootstrap-vue/nuxt",
     // Doc: https://axios.nuxtjs.org/usage
+    "@nuxt/http",
     "@nuxtjs/axios",
     "@nuxtjs/auth",
     "@nuxtjs/pwa",
@@ -50,7 +51,7 @@ export default {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    baseURL: 'http://192.168.1.52:81/api'
+    baseURL: 'http://192.168.1.47:81/api'
   },
   /*
    ** Build configuration
@@ -61,22 +62,22 @@ export default {
   auth: {
     redirect: {
       login: '/login',
-      logout: '/',
+      logout: '/login',
       callback: '/login',
       home: '/'
     },
     strategies: {
       local: {
         endpoints: {
-          login: { url: '/user/login', method: 'post', propertyName: 'token' },
-          // logout: { url: '/api/user/logout', method: 'post', propertyName: false },
-          user: { url: '/user/index', method: 'get', propertyName: false }
+          login: { url: 'user/login', method: 'post', propertyName: 'token' },
+          // user: { url: "/user/me", method: "post", propertyName: 'data' },
+          user:false,
+          logout: false
         },
         tokenRequired: true,
-        tokenType: true
+        tokenType:'Bearer'
       }
-    },
-    // localStorage: true
+    }
   },
   build: {
     /*
