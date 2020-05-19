@@ -146,7 +146,8 @@ class UserController extends Controller
         $model = User::findOne(Yii::$app->user->id);
         return [
             ' status' => 'success',
-            'data' => [
+            'user' => [
+                'id' => $model->id,
                 'username' => $model->username,
                 'email' => $model->email,
             ],

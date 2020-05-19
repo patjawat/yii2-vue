@@ -1,4 +1,5 @@
 export default {
+    namespaced: true,
     state:{
         login:false,
         username:''
@@ -6,6 +7,7 @@ export default {
     mutations: {
         GET_ME(state,data){
         state.username = data
+        console.log(data)
         }
     },
     actions: {
@@ -14,8 +16,9 @@ export default {
                 commit('GET_ME','aaaaa')
                 setTimeout(() =>{
                     resolve(true)
-                },1000)
+                },100)
             })
+            // console.log('get ME')
         }
 
     },getters: {

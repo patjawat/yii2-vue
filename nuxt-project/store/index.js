@@ -1,5 +1,5 @@
 import Vuex from 'vuex'
-// import MODULE_AUTH from './modules/auth'
+import MODULE_AUTH from './modules/auth/index'
 import MODULE_USER from './modules/user'
 const createStore = () => {
   return new Vuex.Store({
@@ -10,7 +10,7 @@ const createStore = () => {
       
     },
     modules:{
-      // MODULE_AUTH,
+      MODULE_AUTH,
       MODULE_USER
     }
   })

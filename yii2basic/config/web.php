@@ -2,6 +2,7 @@
 
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
+$modules = require __DIR__ . '/modules.php';
 
 $config = [
     'id' => 'basic',
@@ -11,18 +12,8 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/npm-asset',
     ],
-    'modules' => [
-        'user' => [
-            'class' => 'dektrium\user\Module',
-            'enableUnconfirmedLogin' => true,
-            'confirmWithin' => 21600,
-            'cost' => 12,
-            'admins' => ['admin'],
-        ],
-        'api' => [
-            'class' => 'app\modules\api\Api',
-        ],
-    ],
+
+    'modules' => $modules,
     'components' => [
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
@@ -41,13 +32,13 @@ $config = [
         'response' => [
             // 'format' =>  \yii\web\Response::FORMAT_JSON,
             // 'charset' => 'UTF-8',
-            // 'formatters' => [
-            //     \yii\web\Response::FORMAT_JSON => [
-            //         'class' => 'yii\web\JsonResponseFormatter',
-            //         'prettyPrint' => YII_DEBUG, // use "pretty" output in debug mode
-            //         'encodeOptions' => JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE,
-            //     ],
-            // ],
+            'formatters' => [
+                \yii\web\Response::FORMAT_JSON => [
+                    'class' => 'yii\web\JsonResponseFormatter',
+                    'prettyPrint' => YII_DEBUG, // use "pretty" output in debug mode
+                    'encodeOptions' => JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE,
+                ],
+            ],
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',

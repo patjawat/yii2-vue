@@ -19,11 +19,8 @@
         </div>
       </div><!-- /.container-fluid -->
     </section>
-
     <!-- Main content -->
     <section class="content">
-       loading : {{loading}}
-       <!-- <Loading /> -->
 <nuxt/>
     </section>
     <!-- /.content -->

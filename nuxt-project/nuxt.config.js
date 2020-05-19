@@ -104,12 +104,12 @@ export default {
       local: {
         endpoints: {
           login: { url: 'user/login', method: 'post', propertyName: 'token' },
-          user: { url: "/user/me", method: "post", propertyName: 'data' },
-          user:false,
-          logout: false
+          user: { url: "/user/me", method: "get", propertyName: 'user' },
+          // user:false,
+          // logout: false
         },
-        tokenRequired: true,
-        tokenType:'Bearer'
+        // tokenRequired: tre,
+        // tokenType:'Bearer'u
       }
     }
   },
