@@ -47,8 +47,8 @@
 
 <script>
 import Notification from '~/components/Notification'
-
 export default {
+  layout:'blank',
    middleware: 'guest',
   components: {
     Notification,
@@ -70,11 +70,13 @@ export default {
             username: this.username,
             password: this.password
           }
-        })
+        }) 
+        // this.$toast.success('Logged In!');
 
         // this.$router.push('/')
       } catch (e) {
         this.error = e.response.data.message
+        this.$toast.error(e.response.data.message)
       }
     }
   }
