@@ -17,7 +17,6 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href: '/plugins/fontawesome-free/css/all.min.css' },
-      { rel: 'stylesheet', href: 'https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css' },
       { rel: 'stylesheet', href: '/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css' },
       { rel: 'stylesheet', href: '/plugins/icheck-bootstrap/icheck-bootstrap.min.css' },
       { rel: 'stylesheet', href: '/plugins/jqvmap/jqvmap.min.css' },
@@ -76,14 +75,17 @@ export default {
     "@nuxtjs/auth",
     "@nuxtjs/pwa",
     // Doc: https://github.com/nuxt-community/dotenv-module
-    "@nuxtjs/dotenv"
+    "@nuxtjs/dotenv",
+    '@nuxtjs/toast',
+    // '@nuxtjs/browserconfig',
+    ['@nuxtjs/browserconfig', { TileColor: '#f44336' }],
   ],
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    baseURL: 'http://192.168.1.52:81/api'
+    baseURL: 'http://127.0.0.1:81/api'
   },
   /*
    ** Build configuration
@@ -102,7 +104,7 @@ export default {
       local: {
         endpoints: {
           login: { url: 'user/login', method: 'post', propertyName: 'token' },
-          // user: { url: "/user/me", method: "post", propertyName: 'data' },
+          user: { url: "/user/me", method: "post", propertyName: 'data' },
           user:false,
           logout: false
         },
@@ -111,6 +113,18 @@ export default {
       }
     }
   },
+  toast: {
+    position: 'top-right',
+    register: [ // Register custom toasts
+      {
+        name: 'my-error',
+        message: 'Oops...Something went wrong',
+        options: {
+          type: 'error'
+        }
+      }
+    ]
+},
   build: {
     /*
      ** You can extend webpack config here

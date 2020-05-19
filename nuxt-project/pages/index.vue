@@ -3,8 +3,9 @@
     hello
   {{$store.state.MODULE_AUTH}}
     <button @click="loadData">Load Data</button>
+    <button @click="loadSuccess">loadSuccess</button>
+    <br>
     {{JSON.stringify(this.user)}}
-    <img src="~assets/img/AdminLTELogo.png"/>
              <a class="navbar-item" @click="logout">Logout</a>
 
   </div>
@@ -40,6 +41,16 @@ export default {
       async logout() {
     await this.$auth.logout();
   },
+  async loadSuccess(){
+    // this.$toast.success('Hello!');
+    this.$toast.error("Toasted !!",
+        {
+          position: "top-right",
+          duration: 2000,
+          message: 'Oops...Something went wrong',
+        }
+      );
+  }
   }
 }
 </script>
