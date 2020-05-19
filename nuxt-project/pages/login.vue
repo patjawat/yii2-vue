@@ -47,8 +47,8 @@
 
 <script>
 import Notification from '~/components/Notification'
-
 export default {
+  layout:'blank',
    middleware: 'guest',
   components: {
     Notification,

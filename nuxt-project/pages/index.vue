@@ -1,9 +1,12 @@
 <template>
   <div class="container">
     hello
-  
+  {{$store.state.MODULE_AUTH}}
     <button @click="loadData">Load Data</button>
     {{JSON.stringify(this.user)}}
+    <img src="~assets/img/AdminLTELogo.png"/>
+             <a class="navbar-item" @click="logout">Logout</a>
+
   </div>
 </template>
 
@@ -11,6 +14,10 @@
 import Logo from '~/components/Logo.vue'
 
 export default {
+   layout: 'adminLte',
+   mounted() {
+     console.log('State',$nuxt.$store.state);
+   },
   components: {
     Logo
   },
@@ -29,7 +36,10 @@ export default {
           this.error = e.res;
           this.user = e.message;
        }
-    }
+    },
+      async logout() {
+    await this.$auth.logout();
+  },
   }
 }
 </script>
