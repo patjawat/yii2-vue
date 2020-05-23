@@ -23,16 +23,18 @@ class _HomeState extends State<Home> {
         child: Text('Login', style: TextStyle(color: Colors.white)),
         onPressed: () {
           print('Login user');
-          MaterialPageRoute materialPageRoute = MaterialPageRoute(builder: (BuildContext context) =>Register());
+          MaterialPageRoute materialPageRoute =
+              MaterialPageRoute(builder: (BuildContext context) => Register());
           Navigator.of(context).push(materialPageRoute);
         });
   }
 
   Widget registerBtn() {
-    return RaisedButton(child: Text('Register'), onPressed: () {
+    return RaisedButton(
+        child: Text('Register'),
+        onPressed: () {
           print('register user');
-
-    });
+        });
   }
 
   Widget showBtn() {
@@ -55,9 +57,12 @@ class _HomeState extends State<Home> {
     return Scaffold(
         body: SafeArea(
             child: Container(
+      // กำหนดสีพื้นหลัง
       decoration: BoxDecoration(
-        // gradient: RadialGradient(colors:[])
-        ),
+          gradient: LinearGradient(
+              colors: [Colors.yellow.shade700, Colors.blue.shade700],
+              begin: Alignment.centerLeft,
+              end: Alignment(-1.0, 1.0))),
       child: Center(
           child: Column(
         mainAxisSize: MainAxisSize.min,
