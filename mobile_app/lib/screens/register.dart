@@ -23,9 +23,23 @@ Widget ButtomTable() {
       body: Container(
         child: Column(
           children: <Widget>[
-            // ButtomTable()
+            ButtomTable()
           ],
         )
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked, //specify the location of the FAB
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            clickedCentreFAB = !clickedCentreFAB; //to update the animated container
+          });
+        },
+        tooltip: "Centre FAB",
+        child: Container(
+          margin: EdgeInsets.all(15.0),
+          child: Icon(Icons.add),
+        ),
+        elevation: 4.0,
       ),
       
  
