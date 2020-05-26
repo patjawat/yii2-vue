@@ -27,24 +27,18 @@ class HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       // backgroundColor:Colors.pink.shade700,
-      // appBar: AppBar(title: Text('Menu'), backgroundColor: Colors.blueGrey),
+      appBar: AppBar(title: Text('Menu'), backgroundColor: Colors.blueGrey),
       body: SafeArea(
-          child: Container(
-              child: Center(
         child: Container(
-          height: 300,
-          width: 300,
-          decoration: BoxDecoration(
-            color: Color(0xFF3be2a5),
-            borderRadius: BorderRadius.circular(16),
-            image: DecorationImage(
-              image: NetworkImage(
-                  'https://miro.medium.com/max/3200/0*LjBPCQFGjmSJ6D46.png'),
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
-      ))),
+        color: Colors.greenAccent,
+        child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            // crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Icon(Icons.edit, size: 48, color: Colors.white),
+              Icon(Icons.motorcycle, size: 148),
+              Icon(Icons.home, size: 48),
+            ]),
+      )), 
       //specify the location of the FAB
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton:
