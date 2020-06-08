@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../utility/normal_dialog.dart';
+
 class SignUp extends StatefulWidget {
   @override
   _SignUpState createState() => _SignUpState();
@@ -15,7 +17,7 @@ class _SignUpState extends State<SignUp> {
       ),
         body:Center(
           child: Container(
-            width:300.0,
+            width:350.0,
             decoration:BoxDecoration(),
             child:Column(
              children: <Widget>[
@@ -55,8 +57,10 @@ Row superUserRadio() => Row(
     onChanged:(value)=>{
       setState(()=>{
         shooseType = value
-      })
-    }),
+      }),
+      
+    }
+    ),
     Text('ผู้ดูแลระบบ')
   ]
 );
@@ -82,7 +86,11 @@ Widget formPasswd() => TextField(
 Widget submitButton() => RaisedButton(
   child: Text("Register"),
   onPressed:()=>{
-    print('บันทึก')
+    if(username.isEmpty || username == null || password.isEmpty || username == null || shooseType.isEmpty || shooseType == null){
+    normalDialog(context, 'ต้องไม่ใช่ค่าว่าง')
+    }else{
+      print('OK')
+    }
   }
   );
 
