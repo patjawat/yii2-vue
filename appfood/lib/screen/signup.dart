@@ -86,10 +86,13 @@ Widget formPasswd() => TextField(
 Widget submitButton() => RaisedButton(
   child: Text("Register"),
   onPressed:()=>{
-    if(username.isEmpty || username == null || password.isEmpty || username == null || shooseType.isEmpty || shooseType == null){
+    if(username.isEmpty || username == null || password.isEmpty || username == null){
     normalDialog(context, 'ต้องไม่ใช่ค่าว่าง')
+    }else if(shooseType == null){
+    normalDialog(context, 'โปรดเลือกชนิดของผูาสมัคร')
     }else{
       print('OK')
+
     }
   }
   );
