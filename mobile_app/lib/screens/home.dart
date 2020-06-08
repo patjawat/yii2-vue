@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/screens/signin.dart';
 
 //class needs to extend StatefulWidget since we need to make changes to the bottom app bar according to the user clicks
 class Home extends StatefulWidget {
@@ -56,7 +57,11 @@ class HomeState extends State<Home> {
               margin: EdgeInsets.only(left: 12.0, right: 12.0),
               child: Row(children: <Widget>[
                 IconButton(
-                    icon: Icon(Icons.add, color: Colors.white), onPressed: null)
+                    icon: Icon(Icons.add, color: Colors.white), 
+                    onPressed:(){
+                      Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => Signin()));
+                    }
+                    )
               ]))),
     );
   }
